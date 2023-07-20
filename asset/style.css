@@ -4,3 +4,10 @@
     background: url("img/bacgroung.jpg");
     background-size: cover;
 }
+
+.ninja{
+    width: 6%;
+    position: absolute;
+    top: 60%;
+    left: 2%;
+}
