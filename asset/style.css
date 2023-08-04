@@ -3,11 +3,12 @@
     height: 100vh;
     background: url("img/bacgroung.jpg");
     background-size: cover;
+    background-repeat: repeat-x;
 }
 
 .ninja{
     width: 6%;
     position: absolute;
-    top: 60%;
+    top: 470px;
     left: 2%;
 }
