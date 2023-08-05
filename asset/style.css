@@ -4,6 +4,8 @@
     background: url("img/bacgroung.jpg");
     background-size: cover;
     background-repeat: repeat-x;
+    overflow-x: hidden;
+    position: absolute;
 }
 
 .ninja{
@@ -11,4 +13,15 @@
     position: absolute;
     top: 470px;
     left: 2%;
+    z-index: 2;
+}
+
+.box{
+    width: 200px;
+    height: 200px;
+    background: url("img/AgitatedBoringEchidna-max-1mb.gif");
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    top: 520px;
 }
