@@ -1,3 +1,4 @@
+$("#endPage").fadeOut(1);
 var ninja = document.getElementById("ninja");
 let idleImgNumber = 0;
 let idleAnimationNumber = 0;
@@ -63,9 +64,13 @@ function keyCheck(event) {
 let backgroundX = 0;
 let moveBackgroundId = 0;
 
+let sc = 0;
+
 function moveBackground() {
     backgroundX -= 20;
     document.getElementById("background").style.backgroundPositionX = backgroundX + "px";
+    sc++;
+    document.getElementById("score").innerHTML = sc;
 }
 
 let jumpAnimationNumber = 0;
@@ -80,7 +85,7 @@ function jumpAnimation() {
         ninja.style.top = ninjaMarginTop + "px";
     }
     if (jumpAnimationNumber >= 7){
-        ninjaMarginTop = ninjaMarginTop +55;
+        ninjaMarginTop = ninjaMarginTop +57;
         ninja.style.top = ninjaMarginTop + "px";
     }
 
@@ -157,6 +162,8 @@ function deathAnimation(){
 
     if (deadImageNumber == 11){
         deadImageNumber = 10;
+        document.getElementById("endScore").innerHTML = sc;
+        $("#endPage").fadeIn(1000);
     }
 
     ninja.src = "asset/img/sprites/Dead__"+deadImageNumber+".png";
@@ -164,6 +171,9 @@ function deathAnimation(){
     ninja.style.top = '470px';
 }
 
+function reload() {
+    location.reload();
+}
 
 
 

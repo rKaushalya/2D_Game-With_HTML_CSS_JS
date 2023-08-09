@@ -13,7 +13,7 @@
     position: absolute;
     top: 470px;
     left: 2%;
-    z-index: 2;
+    z-index: 1;
 }
 
 .box{
@@ -24,4 +24,50 @@
     background-position: center;
     position: absolute;
     top: 520px;
+}
+
+#endPage{
+    width: 50%;
+    height: 50%;
+    /*background-color: rgb(143,188,143);*/
+    background-color: #93a74e;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 500;
+    font-family: "Engravers MT";
+    /*visibility: hidden;*/
+    z-index: 1;
+    transition: 3s;
+}
+
+#btnTryAgain{
+    font-size: 30px;
+    margin-top: 20px;
+    background-color: wheat;
+    border-radius: 20px;
+    color: brown;
+}
+
+#btnTryAgain:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+#score{
+    position: absolute;
+    font-size: 42px;
+    font-weight: bold;
+    margin-top: 100px;
+    margin-left: 50px;
+    font-family: "Engravers MT";
 }
