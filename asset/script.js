@@ -1,4 +1,5 @@
 $("#endPage").fadeOut(1);
+$("#winPage").fadeOut(1);
 var ninja = document.getElementById("ninja");
 let idleImgNumber = 0;
 let idleAnimationNumber = 0;
@@ -71,6 +72,22 @@ function moveBackground() {
     document.getElementById("background").style.backgroundPositionX = backgroundX + "px";
     sc++;
     document.getElementById("score").innerHTML = sc;
+
+    if (sc == 1500){
+        document.getElementById("endScoreFinish").innerHTML = sc;
+        $("#winPage").fadeIn(1000);
+
+        clearInterval(boxAnimationId);
+
+        clearInterval(runAnimationStartNumber);
+        runAnimationStartNumber = -1;
+
+        clearInterval(jumpAnimationStartNumber);
+        jumpAnimationStartNumber = -1;
+
+        clearInterval(moveBackgroundId);
+        moveBackgroundId = -1;
+    }
 }
 
 let jumpAnimationNumber = 0;
@@ -107,10 +124,10 @@ function jumpAnimationStart() {
     jumpAnimationStartNumber = setInterval(jumpAnimation,80);
 }
 
-let left = 580;
+let left = 1580;
 
 function createBoxes() {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 15; i++) {
         let box = document.createElement("div");
         box.className = "box";
         document.getElementById("background").appendChild(box);
@@ -118,9 +135,12 @@ function createBoxes() {
         box.id = "box" + i;
 
         if (i <= 5){
+            left += 800;
+        }
+        if (i > 5){
             left += 600;
         }
-        if (i >= 5){
+        if (i > 10){
             left += 400;
         }
     }
@@ -135,7 +155,7 @@ function boxAnimation() {
         var newLeft = parseInt(currentLeft) -25;
         id.style.left = newLeft + "px";
 
-        if (newLeft > -95 & newLeft <= 100){
+        if (newLeft > -95 && newLeft <= 100){
             if (ninjaMarginTop > 360){
                 clearInterval(boxAnimationId);
 
