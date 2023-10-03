@@ -109,3 +109,10 @@
     cursor: pointer;
     transform: scale(1.2);
 }
+
+.apple{
+    width: 100px;
+    height: 100px;
+    background-color: brown;
+    position: absolute;
+}

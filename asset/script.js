@@ -48,6 +48,9 @@ function keyCheck(event) {
         if (boxAnimationId == 0){
             boxAnimationId = setInterval(boxAnimation,80);
         }
+        if (appleAnimationId == 0){
+            appleAnimationId = setInterval(appleAnimation,80);
+        }
     }
     if (event.code == "Space"){
         if (jumpAnimationStartNumber == 0){
@@ -58,6 +61,9 @@ function keyCheck(event) {
         }
         if (boxAnimationId  == 0){
             boxAnimationId = setInterval(boxAnimation,80);
+        }
+        if (appleAnimationId == 0){
+            appleAnimationId = setInterval(appleAnimation,80);
         }
     }
 }
@@ -193,6 +199,42 @@ function deathAnimation(){
 
 function reload() {
     location.reload();
+}
+
+// version 2
+
+let appleLeft = 400;
+
+function createApples() {
+    for (let i = 0; i < 15; i++) {
+        let apple = document.createElement("div");
+        apple.className = "apple";
+        document.getElementById("background").appendChild(apple);
+        apple.style.left = appleLeft + "px";
+        apple.id = "apple" + i;
+
+        if (i <= 5){
+            appleLeft += 800;
+        }
+        if (i > 5){
+            appleLeft += 600;
+        }
+        if (i > 10){
+            appleLeft += 400;
+        }
+    }
+}
+
+let appleAnimationId = 0;
+
+function appleAnimation() {
+    for (let i = 0; i < 10; i++) {
+        var id = document.getElementById("apple"+i);
+        var currentLeft = getComputedStyle(id).left;
+        var newLeft = parseInt(currentLeft) -25;
+        id.style.left = newLeft + "px";
+
+    }
 }
 
 
