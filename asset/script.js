@@ -165,6 +165,8 @@ function boxAnimation() {
             if (ninjaMarginTop > 360){
                 clearInterval(boxAnimationId);
 
+                clearInterval(appleAnimationId);
+
                 clearInterval(runAnimationStartNumber);
                 runAnimationStartNumber = -1;
 

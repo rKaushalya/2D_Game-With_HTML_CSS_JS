@@ -113,6 +113,9 @@
 .apple{
     width: 100px;
     height: 100px;
-    background-color: brown;
+    background: url("img/apple.gif");
+    background-size: contain;
+    background-position: center;
     position: absolute;
+    top: 35%;
 }
