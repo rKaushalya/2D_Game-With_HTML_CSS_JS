@@ -120,6 +120,7 @@ function jumpAnimation() {
     }
 
     ninja.src = "asset/img/sprites/Jump__"+jumpAnimationNumber+".png";
+    ninja.style.width = '9%';
 }
 
 function jumpAnimationStart() {
@@ -141,13 +142,13 @@ function createBoxes() {
         box.id = "box" + i;
 
         if (i <= 5){
-            left += 800;
+            left += 1200;
         }
         if (i > 5){
-            left += 600;
+            left += 800;
         }
         if (i > 10){
-            left += 400;
+            left += 600;
         }
     }
 }
@@ -208,7 +209,7 @@ function reload() {
 
 // version 2
 
-let appleLeft = 400;
+let appleLeft = 1000;
 
 function createApples() {
     for (let i = 0; i < 15; i++) {
@@ -219,7 +220,7 @@ function createApples() {
         apple.id = "apple" + i;
 
         if (i <= 5){
-            appleLeft += 800;
+            appleLeft += 1200;
         }
         if (i > 5){
             appleLeft += 600;
@@ -253,24 +254,21 @@ function jumpAttackAnimation() {
         clearInterval(jumpAttackAnimationNumber);
         jumpAttackAnimationNumber = 0;
 
-        setInterval(jumpAnimationStartNumber);
+        jumpAnimationStartNumber = setInterval(jumpAnimation,80);
     }
 
     ninja.src = "asset/img/sprites/Jump_Attack__"+jumpAttackImgNumber+".png";
+    ninja.style.width = '12%';
 }
 
 function jumpAttackAnimationStart() {
-    clearInterval(idleAnimationNumber);
-    idleAnimationNumber = 0;
-
-    clearInterval(runAnimationStartNumber);
-    runAnimationStartNumber = 0;
-
     clearInterval(jumpAnimationStartNumber);
 
     jumpAttackAnimationNumber = setInterval(jumpAttackAnimation, 30);
 }
 
 document.getElementById("background").addEventListener("click",function () {
-    jumpAttackAnimationStart();
+    if (jumpAnimationNumber > 4){
+        jumpAttackAnimationStart();
+    }
 });
