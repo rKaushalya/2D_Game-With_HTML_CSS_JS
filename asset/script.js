@@ -173,6 +173,9 @@ function boxAnimation() {
                 clearInterval(jumpAnimationStartNumber);
                 jumpAnimationStartNumber = -1;
 
+                clearInterval(jumpAttackAnimationNumber);
+                jumpAttackAnimationNumber = -1;
+
                 clearInterval(moveBackgroundId);
                 moveBackgroundId = -1;
 
@@ -239,5 +242,35 @@ function appleAnimation() {
     }
 }
 
+let jumpAttackImgNumber = 0;
+let jumpAttackAnimationNumber = 0;
 
+function jumpAttackAnimation() {
+    jumpAttackImgNumber ++;
 
+    if (jumpAttackImgNumber == 11){
+        jumpAttackImgNumber = 1;
+        clearInterval(jumpAttackAnimationNumber);
+        jumpAttackAnimationNumber = 0;
+
+        setInterval(jumpAnimationStartNumber);
+    }
+
+    ninja.src = "asset/img/sprites/Jump_Attack__"+jumpAttackImgNumber+".png";
+}
+
+function jumpAttackAnimationStart() {
+    clearInterval(idleAnimationNumber);
+    idleAnimationNumber = 0;
+
+    clearInterval(runAnimationStartNumber);
+    runAnimationStartNumber = 0;
+
+    clearInterval(jumpAnimationStartNumber);
+
+    jumpAttackAnimationNumber = setInterval(jumpAttackAnimation, 30);
+}
+
+document.getElementById("background").addEventListener("click",function () {
+    jumpAttackAnimationStart();
+});
