@@ -1,5 +1,6 @@
 $("#endPage").fadeOut(1);
 $("#winPage").fadeOut(1);
+$("#blast").fadeOut(1);
 var ninja = document.getElementById("ninja");
 let idleImgNumber = 0;
 let idleAnimationNumber = 0;
@@ -79,11 +80,13 @@ function moveBackground() {
     sc++;
     document.getElementById("score").innerHTML = sc;
 
-    if (sc == 1500){
+    if (sc == 500){
         document.getElementById("endScoreFinish").innerHTML = sc;
         $("#winPage").fadeIn(1000);
 
         clearInterval(boxAnimationId);
+
+        clearInterval(appleAnimationId);
 
         clearInterval(runAnimationStartNumber);
         runAnimationStartNumber = -1;
@@ -240,6 +243,12 @@ function appleAnimation() {
         var newLeft = parseInt(currentLeft) -25;
         id.style.left = newLeft + "px";
 
+        if (newLeft > -95 && newLeft <= 100){
+            if (ninjaMarginTop > 180 && jumpAttackImgNumber > 1){
+                id.style.display = "none";
+                sc += 100;
+            }
+        }
     }
 }
 

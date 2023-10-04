@@ -117,5 +117,16 @@
     background-size: contain;
     background-position: center;
     position: absolute;
-    top: 32%;
+    top: 30%;
+}
+
+#blast{
+    width: 100px;
+    height: 100px;
+    background: url("img/bomb.gif");
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    top: 29%;
+    left: 8%;
 }
