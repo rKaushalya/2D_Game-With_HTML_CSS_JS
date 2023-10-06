@@ -1,9 +1,17 @@
 $("#endPage").fadeOut(1);
 $("#winPage").fadeOut(1);
 $("#blast").fadeOut(1);
+
 var ninja = document.getElementById("ninja");
 let idleImgNumber = 0;
 let idleAnimationNumber = 0;
+
+let runAudio = new Audio("asset/audio/cruising-down-8bit-lane-159615.mp3");
+let jumpAudio = new Audio("asset/audio/cartoon-jump-6462.mp3");
+let knifeAudio = new Audio("asset/audio/knife-slice-41231.mp3");
+let appleAudio = new Audio("asset/audio/quick-swhooshing-noise-80898.mp3");
+let deadAudio = new Audio("asset/audio/negative_beeps-6008.mp3");
+let winAudio = new Audio("asset/audio/success-fanfare-trumpets-6185.mp3");
 
 function idleNinja() {
     idleImgNumber ++;
@@ -40,6 +48,7 @@ function runAnimationStart() {
 
 function keyCheck(event) {
     if (event.code == "Enter"){
+        runAudio.play();
         if (runAnimationStartNumber == 0){
             runAnimationStart();
         }
@@ -54,6 +63,7 @@ function keyCheck(event) {
         }
     }
     if (event.code == "Space"){
+        runAudio.play();
         if (jumpAnimationStartNumber == 0){
             jumpAnimationStart();
         }
@@ -80,9 +90,11 @@ function moveBackground() {
     sc++;
     document.getElementById("score").innerHTML = sc;
 
-    if (sc == 500){
+    if (sc > 1500){
         document.getElementById("endScoreFinish").innerHTML = sc;
         $("#winPage").fadeIn(1000);
+        runAudio.pause();
+        winAudio.play();
 
         clearInterval(boxAnimationId);
 
@@ -127,6 +139,7 @@ function jumpAnimation() {
 }
 
 function jumpAnimationStart() {
+    jumpAudio.play();
     clearInterval(idleAnimationNumber);
     idleAnimationNumber = 0;
     clearInterval(runAnimationStartNumber);
@@ -184,6 +197,8 @@ function boxAnimation() {
                 moveBackgroundId = -1;
 
                 deadAnimationNumber = setInterval(deathAnimation,100);
+                runAudio.pause();
+                deadAudio.play();
             }
         }
     }
@@ -212,7 +227,7 @@ function reload() {
 
 // version 2
 
-let appleLeft = 1000;
+let appleLeft = 2300;
 
 function createApples() {
     for (let i = 0; i < 15; i++) {
@@ -244,11 +259,14 @@ function appleAnimation() {
         id.style.left = newLeft + "px";
 
         if (newLeft > -95 && newLeft <= 100){
-            if (ninjaMarginTop > 180 && jumpAttackImgNumber > 1){
+            if (ninjaMarginTop > 150 && jumpAttackImgNumber > 1){
                 id.style.display = "none";
                 sc += 100;
+                appleAudio.play();
+                $("#blast").fadeIn(100)
             }
         }
+        $("#blast").fadeOut(100);
     }
 }
 
@@ -278,6 +296,7 @@ function jumpAttackAnimationStart() {
 
 document.getElementById("background").addEventListener("click",function () {
     if (jumpAnimationNumber > 4){
+        knifeAudio.play();
         jumpAttackAnimationStart();
     }
 });
